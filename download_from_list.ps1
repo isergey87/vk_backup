@@ -5,10 +5,13 @@ foreach ($line in $lines){
     $url = $line.Split('?')[0];		
     $s = $line.Split(',')[1];
     $title = $s.substring(4);
-    $path = $dest, $title -join "\";	
+    $path = $dest, $title -join "\";
+    $tempPath = $dest, "downloading.temp" -join "\";
     Write-Output "Downloading ($title) .....";
 #for windows >8
-    Invoke-WebRequest $url -OutFile $path;
+    Invoke-WebRequest $url -OutFile $tempPath;
 # for windows 7
 #    (new-object System.Net.WebClient).DownloadFile($url,$path);
+
+Move-Item -literalpath $tempPath -destination $path
 }
