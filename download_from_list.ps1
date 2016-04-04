@@ -8,5 +8,6 @@ foreach ($line in $lines){
     $path = $dest, $title -join "\";	
     Write-Output "Downloading ($title) .....";
     Invoke-WebRequest $url -OutFile $path;
+# for windows 7
 #    (new-object System.Net.WebClient).DownloadFile($url,$path);
 }
