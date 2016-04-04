@@ -13,5 +13,5 @@ foreach ($line in $lines){
 # for windows 7
 #    (new-object System.Net.WebClient).DownloadFile($url,$path);
 
-Move-Item -literalpath $tempPath -destination $path
+Move-Item -literalpath $tempPath -destination $path;
 }
