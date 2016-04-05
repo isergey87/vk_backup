@@ -1,11 +1,11 @@
-$dest = "C:\temp"
+$dest = "D:\temp"
 $lines = Get-Content -Encoding UTF8 vk_music.txt | Where {$_ -notmatch '^\s+$'}  
 
 foreach ($line in $lines){
-    $url = $line.Split('?')[0];		
-    $ind = $line.IndexOf(',')+5;
+    $url = $line.Split("?")[0];		
+    $ind = $line.IndexOf("`t")+1;
     $title = $line.substring($ind) -replace "[`"\\/?|<>:*]", " ";
-    $title = $title.replace("  "," ");
+    $title = $title.replace("  "," ").trim();
     $path = $dest, $title -join "\";
     $tempPath = $dest, "downloading.temp" -join "\";
     Write-Output "Downloading ($title) .....";
